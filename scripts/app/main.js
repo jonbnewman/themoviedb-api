@@ -6,6 +6,8 @@ define([
       var main = this;
       var options = opt || {};
 
+      this.numPeopleResults = ko.observable();
+      this.numPeoplePages = ko.observable();
       this.people = ko.observableArray();
       this.form = {
         queryString: ko.observable('')
@@ -42,18 +44,21 @@ define([
       }, this );
     };
 
-    Main.prototype.runQuery = function() {
+    Main.prototype.searchActors = function() {
       var main = this;
       var params = ko.toJS( this.form );
       if( this.checkValidation( params ) !== false ) {
         // do query
         return $.ajax({
           method: 'get',
-          url: '/json/TheMovieDBQuery/personSearch',
+          url: '/json/TheMovieDBAPI/personSearch',
           dataType: 'json',
           data: params
         }).then(function( data ) {
+          console.log( data );
           main.people.removeAll();
+          main.numPeopleResults( data.total_results );
+          main.numPeoplePages( data.total_pages );
 
           if( data.total_results > 0 ) {
             _.each( data.results, function( resultData ) {

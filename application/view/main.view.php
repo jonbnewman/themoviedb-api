@@ -17,7 +17,7 @@
   
   <body>
     <div class="wrapper">
-      <form data-bind="submit: runQuery">
+      <form data-bind="submit: searchActors">
         <label for="queryString">
           <span>Actor/Actress</span>
           <input type="text" id="queryString" class="focus" data-bind="value: form.queryString, valueUpdate: 'afterkeydown'" placeholder="Robert Deniro" />
@@ -26,9 +26,15 @@
         <button>Find Movies</button>
       </form>
 
-      <div id="people" data-bind="foreach: people">
-        <div class="person" data-bind="click: loadMovies, css: { active: active }">
-          <span class="name" data-bind="text: name"></span>
+      <div id="actor-search-results">
+        <div class="people-label">
+          <span>Actors Found: </span>
+          <span class="num-actors" data-bind="text: numPeopleResults"></span>
+        </div>
+        <div class="people" data-bind="foreach: people">
+          <div class="person" data-bind="click: loadMovies, css: { active: active }">
+            <span class="name" data-bind="text: name"></span>
+          </div>
         </div>
       </div>
 

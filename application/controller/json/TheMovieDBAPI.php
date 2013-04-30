@@ -1,5 +1,5 @@
 <?php
-class TheMovieDBQuery {
+class TheMovieDBAPI {
 	function personSearch() {
     $queryValidation = '/^[a-zA-Z ]+$/';
     if( preg_match( $queryValidation, $_GET['queryString'] ) ) {
