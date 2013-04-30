@@ -29,7 +29,7 @@ define( 'DEBUG',  false );
 
 // define the redis database we use for this application
 define( 'REDIS_HOST', '127.0.0.1' );
-define( 'REDIS_DB', 10 );
+define( 'REDIS_DB', 100 );
 
 // Redis
 try {

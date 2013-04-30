@@ -20,7 +20,7 @@
       <form data-bind="submit: searchActors">
         <label for="queryString">
           <span>Actor/Actress</span>
-          <input type="text" id="queryString" class="focus" data-bind="value: form.queryString, valueUpdate: 'afterkeydown'" placeholder="Robert Deniro" />
+          <input type="text" id="queryString" class="focus" data-bind="value: form.queryString, valueUpdate: 'afterkeydown'" placeholder="Robert De Niro" />
           <div class="error" data-bind="css: { active: validation.state.queryString }"><span class="icon-cross"></span> Please enter an actor or actresses name.</div>
         </label>
         <button>Find Movies</button>

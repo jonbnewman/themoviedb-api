@@ -48,6 +48,8 @@ define([
         channel: 'main',
         topic: 'load:movies',
         callback: function( id ) {
+          main.movies.removeAll();
+
           return $.ajax({
             method: 'get',
             url: '/json/TheMovieDBAPI/movieSearch/' + id,
@@ -70,15 +72,17 @@ define([
       var main = this;
       var params = ko.toJS( this.form );
       if( this.checkValidation( params ) !== false ) {
-        // do query
+        this.people.removeAll();
+        this.movies.removeAll();
+        main.numPeopleResults( undefined );
+        main.numPeoplePages( undefined );
+
         return $.ajax({
           method: 'get',
           url: '/json/TheMovieDBAPI/personSearch',
           dataType: 'json',
           data: params
         }).then(function( data ) {
-          console.log( data );
-          main.people.removeAll();
           main.numPeopleResults( data.total_results );
           main.numPeoplePages( data.total_pages );
 
