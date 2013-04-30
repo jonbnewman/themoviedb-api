@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8" />
 
-    <title><?=(isset($title) ? $title : 'Alertlogic Development Test')?></title>
+    <title><?=(isset($title) ? $title : 'TheMovieDB API')?></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="MobileOptimized" content="320">
     <meta name="HandheldFriendly" content="True">
 
     <link rel="stylesheet" href="/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/css/icon-fonts.css" type="text/css">
     <link rel="stylesheet/less" type="text/css" href="/css/style.less">
     <script src="/scripts/less.min.js" type="text/javascript"></script>
   </head>
@@ -20,6 +21,7 @@
         <label for="queryString">
           <span>Actor/Actress</span>
           <input type="text" id="queryString" data-bind="value: form.queryString" placeholder="Robert Deniro" />
+          <div class="error" data-bind="css: { active: validation.state.queryString }"><span class="icon-cross"></span> Please enter an actor or actresses name.</div>
         </label>
         <button>Find Movies</button>
       </form>
