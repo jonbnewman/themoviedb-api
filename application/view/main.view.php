@@ -32,10 +32,14 @@
           <span class="num-actors" data-bind="text: numPeopleResults"></span>
         </div>
         <div class="people" data-bind="foreach: people">
-          <div class="person" data-bind="click: loadMovies, css: { active: active }">
+          <div class="person" data-bind="click: activate, css: { active: active }">
             <span class="name" data-bind="text: name"></span>
           </div>
         </div>
+      </div>
+
+      <div id="movies" data-bind="foreach: movies">
+        <div class="movie" data-bind="text: title"></div>
       </div>
 
       <div class="push"></div>

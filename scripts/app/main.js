@@ -1,6 +1,6 @@
 define([
-  "jquery", "postal", "knockout", "app/person" ],
-  function( $, postal, ko, Person ) {
+  "jquery", "postal", "knockout", "app/person", "app/movie" ],
+  function( $, postal, ko, Person, Movie ) {
 
     var Main = function( opt ) {
       var main = this;
@@ -9,6 +9,7 @@ define([
       this.numPeopleResults = ko.observable();
       this.numPeoplePages = ko.observable();
       this.people = ko.observableArray();
+      this.movies = ko.observableArray();
       this.form = {
         queryString: ko.observable('')
       };
@@ -42,6 +43,27 @@ define([
       this.form.queryString.subscribe( function() {
         this.checkValidation( ko.toJS( this.form ) );
       }, this );
+
+      postal.subscribe({
+        channel: 'main',
+        topic: 'load:movies',
+        callback: function( id ) {
+          return $.ajax({
+            method: 'get',
+            url: '/json/TheMovieDBAPI/movieSearch/' + id,
+            dataType: 'json'
+          }).then(function( movies ) {
+            console.log( movies );
+            main.movies.removeAll();
+
+            for( var year in movies ) {
+              main.movies.push( new Movie( movies[ year ] ) );
+            }
+          }).always(function() {
+
+          });
+        }
+      });
     };
 
     Main.prototype.searchActors = function() {

@@ -16,9 +16,19 @@ define([
           person.active( false );
         }
       });
+
+      this.active.subscribe(function( state ) {
+        if( state === true ) {
+          postal.publish({
+            channel: 'main',
+            topic: 'load:movies',
+            data: person.id()
+          });
+        }
+      });
     };
 
-    Person.prototype.loadMovies = function() {
+    Person.prototype.activate = function() {
       postal.publish({
         channel: 'people',
         topic: 'deactivate:all'

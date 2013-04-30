@@ -13,20 +13,10 @@ class TheMovieDBAPI {
 	}
 
   function movieSearch( $id ) {
-    $idList = array();
+    $id = $id[0];
 
-    if( is_numeric( $_GET['id'] ) ) {
-      $idList[] = $_GET['id'];
-    } else if( is_array( $_GET['id'] ) ) {
-      foreach( $_GET['id'] as $id ) {
-        if( is_numeric( $id ) ) {
-          $idList[] = $id;
-        }
-      }
-    }
-
-    if( count( $idList ) ) {
-      App::set( 'json', json_encode( App::$Model->TheMovieDB->getMovieList( $idList ) ) );
+    if( is_numeric( $id ) ) {
+      App::set( 'json', json_encode( App::$Model->TheMovieDB->getMovieList( $id ) ) );
     } else {
       App::set( 'json', json_encode( array( 'error' => 'Invalid query string' ) ) );
     }
