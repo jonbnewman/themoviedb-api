@@ -1,11 +1,30 @@
 #movies {
   float: left;
-  background: #E4F2FF;
+  background: #b5c8d9;
   min-height: 630px;
   width: 400px;
 
   & > .movie {
     .box-sizing(border-box);
+    .border-radius(5px);
+    border: 1px solid #aaa;
     padding: 10px;
+    background: white;
+    margin: 10px;
+
+    & > .released {
+      font-size: 12px;
+      color: #888;
+      text-align: right;
+      margin-bottom: 5px;
+
+      & > .date {
+        color: #444;
+      }
+    }
+    & > .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
   }
 }

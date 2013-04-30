@@ -26,20 +26,31 @@
         <button>Find Movies</button>
       </form>
 
-      <div id="actor-search-results">
-        <div class="people-label">
-          <span>Actors Found: </span>
-          <span class="num-actors" data-bind="text: numPeopleResults"></span>
-        </div>
-        <div class="people" data-bind="foreach: people">
-          <div class="person" data-bind="click: activate, css: { active: active }">
-            <span class="name" data-bind="text: name"></span>
+      <div id="no-results" data-bind="css: { visible: !people().length && !searchingActors() }">
+        <div class="message">Please use the form on the left to search for an actor or actress by name.</div>
+      </div>
+      <div id="results" data-bind="css: { visible: people().length }">
+        <div id="actor-search-results">
+          <div class="people-label">
+            <span>Actors Found: </span>
+            <span class="num-actors" data-bind="text: numPeopleResults"></span>
+          </div>
+          <div class="people" data-bind="foreach: people">
+            <div class="person" data-bind="click: activate, css: { active: active }">
+              <span class="name" data-bind="text: name"></span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="movies" data-bind="foreach: movies">
-        <div class="movie" data-bind="text: title"></div>
+        <div id="movies" data-bind="foreach: movies">
+          <div class="movie">
+            <div class="released">
+              <span>Released on: </span>
+              <span class="date" data-bind="text: releaseDate"></span>
+            </div>
+            <div class="title"><span data-bind="text: title"></span></div>
+          </div>
+        </div>
       </div>
 
       <div class="push"></div>

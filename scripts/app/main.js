@@ -10,6 +10,8 @@ define([
       this.numPeoplePages = ko.observable();
       this.people = ko.observableArray();
       this.movies = ko.observableArray();
+      this.searchingActors = ko.observable( false );
+      this.searchingMovies = ko.observable( false );
       this.form = {
         queryString: ko.observable('')
       };
@@ -48,6 +50,7 @@ define([
         channel: 'main',
         topic: 'load:movies',
         callback: function( id ) {
+          main.searchingMovies( true );
           main.movies.removeAll();
 
           return $.ajax({
@@ -55,14 +58,13 @@ define([
             url: '/json/TheMovieDBAPI/movieSearch/' + id,
             dataType: 'json'
           }).then(function( movies ) {
-            console.log( movies );
             main.movies.removeAll();
 
             for( var year in movies ) {
               main.movies.push( new Movie( movies[ year ] ) );
             }
           }).always(function() {
-
+            main.searchingMovies( false );
           });
         }
       });
@@ -72,6 +74,7 @@ define([
       var main = this;
       var params = ko.toJS( this.form );
       if( this.checkValidation( params ) !== false ) {
+        this.searchingActors( true );
         this.people.removeAll();
         this.movies.removeAll();
         main.numPeopleResults( undefined );
@@ -92,7 +95,7 @@ define([
             });
           }
         }).always(function() {
-
+          this.searchingActors( false );
         });
       }
     };
