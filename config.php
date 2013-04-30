@@ -10,17 +10,7 @@ define( 'ROOT', __DIR__ );
 /**
  * Twitter username to stream
  */
-define('TWITTER_USERNAME', 'overfocus');
-
-/**
- * Github username to stream
- */
-define('GITHUB_USERNAME', 'reflectiveSingleton');
-
-/**
- * Reddit username to stream
- */
-define('REDDIT_USERNAME', 'reflectiveSingleton');
+define('API_KEY', 'a0c930e0998ae0fcfe722333f6721c53');
 
 /**
  *	Base URI for this application
@@ -34,30 +24,12 @@ define( 'DEFAULT_CONTROLLER', 'index' );
 // main.view( header -> [ $bodyView / DEFAULT_BODY_VIEW ] -> footer )
 define( 'DEFAULT_BODY_VIEW',  '/pages/default.view' );
 
-define( 'DBNAME', 'overfocus' );
-define( 'DBUSER', 'overfocus' );
-define( 'DBPASS', '34ifmv9ccbre4mf4idvlwdc4d!' );
-
 // true = generate debugging information
 define( 'DEBUG',  false );
 
 // define the redis database we use for this application
 define( 'REDIS_HOST', '127.0.0.1' );
 define( 'REDIS_DB', 10 );
-
-/**
- * Connect to the databases (MySQL + Redis)
- */
-
-// MySQL
-try {
-  $db = new PDO("mysql:host=localhost;dbname=".DBNAME, DBUSER, DBPASS);
-} catch(PDOException $e) {
-  if( DEBUG ) {
-    echo $e->getMessage();
-  }
-  die('Could not connect to MySQL database.');
-}
 
 // Redis
 try {

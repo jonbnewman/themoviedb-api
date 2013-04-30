@@ -22,9 +22,11 @@ require.config({
 });
 
 require([
-  "knockout", "app/main", "util", "bindings" ],
-  function( ko, Main, util ) {
+  "jquery", "knockout", "app/main", "util", "bindings" ],
+  function( $, ko, Main, util ) {
     window.main = new Main();
     ko.applyBindings( window.main );
+
+    $('.focus').focus();
   }
 );
