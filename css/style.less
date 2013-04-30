@@ -1,0 +1,104 @@
+@import "lesshat.less";
+@import "config.less";
+
+input::-webkit-input-placeholder {
+    color:    #aaa;
+}
+input:-moz-placeholder {
+    color:    #aaa;
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.clearfix {
+  display: inline-block;
+
+  &:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+}
+
+.clearblock {
+  display: block;
+
+  &:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+}
+
+::selection {
+  .selection-style;
+}
+::-moz-selection {
+  .selection-style;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto (-1 * @footer-height);
+  position: relative;
+}
+
+footer, .push {
+  height: @footer-height;
+  clear: both;
+}
+
+footer {
+  background: transparent;
+  color: #222;
+  position: relative;
+
+  & > .content {
+    width: 320px;
+    .box-sizing(border-box);
+    padding: 10px;
+    text-align: right;
+    line-height: 25px;
+    border-top: 2px solid #abd6fe;
+
+    a {
+      padding: 2px 5px;
+      margin-left: 5px;
+      color: #222;
+      border: 1px solid #888;
+
+      &:hover {
+        text-decoration: none;
+        border-color: black;
+      }
+    }
+  }
+}

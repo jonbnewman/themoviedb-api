@@ -1,0 +1,1 @@
+<?/** * Models to autoload */$__AUTOLOAD[ 'models' ] = array( 'TheMovieDB.model' );/** * Libraries to autoload */$__AUTOLOAD[ 'libraries' ] = array( );?>
