@@ -1,0 +1,42 @@
+form {
+  display: block;
+  width: 320px;
+  .box-sizing(border-box);
+  text-align: right;
+
+  label {
+    cursor: pointer;
+    padding: 10px;
+    display: block;
+    font-weight: bold;
+    color: #666;
+    &:hover {
+      color: black;
+    }
+
+    span {
+      margin-right: 5px;
+    }
+    input {
+      padding: 5px;
+    }
+  }
+  button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    background: #4a9fef;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    .border-radius(4px);
+    border: 1px solid #1e7cd3;
+    &:hover {
+      .box-shadow(0 2px 4px -1px rgba(255,255,255,0.6) inset);
+    }
+    &:active {
+      .box-shadow(0 2px 4px -1px rgba(0,0,0,0.6) inset);
+      color: #eee;
+    }
+  }
+}

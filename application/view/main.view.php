@@ -16,6 +16,14 @@
   
   <body>
     <div class="wrapper">
+      <form data-bind="submit: runQuery">
+        <label for="queryString">
+          <span>Actor/Actress</span>
+          <input type="text" id="queryString" data-bind="value: form.queryString" placeholder="Robert Deniro" />
+        </label>
+        <button>Find Movies</button>
+      </form>
+
       <div class="push"></div>
     </div>
     <footer>
