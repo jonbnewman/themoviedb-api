@@ -14,7 +14,9 @@ define([
 
       this.config = movieData.config;
       this.posterImageURL = ko.computed(function() {
-        return this.config.images.base_url + this.config.images.poster_sizes[0] + '/' + this.poster();
+        if( this.poster() !== null ) {
+          return this.config.images.base_url + this.config.images.poster_sizes[0] + '/' + this.poster();
+        }
       }, this);
     };
 
