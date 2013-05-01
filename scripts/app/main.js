@@ -65,7 +65,7 @@ define([
             main.movies.removeAll();
 
             for( var year in movies ) {
-              main.movies.push( new Movie( $.extend( {}, movies[ year ], { config: main.config } ) ) );
+              main.movies.push( new Movie( $.extend( true, {}, movies[ year ], { config: main.config } ) ) );
             }
           }).always(function() {
             main.searchingMovies( false );
