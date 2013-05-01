@@ -187,6 +187,7 @@ form label input:focus {
 }
 form label .error {
   position: absolute;
+  z-index: 1000;
   left: 103%;
   top: 10px;
   line-height: 26px;
