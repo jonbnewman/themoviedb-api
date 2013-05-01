@@ -43,7 +43,7 @@
         </div>
         <table class="info">
           <tr class="released">
-            <td class="label">Release Date:</td>
+            <td class="label">Released:</td>
             <td class="content" data-bind="text: releaseDate"></td>
           </tr>
           <tr class="title">
