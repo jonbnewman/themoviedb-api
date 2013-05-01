@@ -38,18 +38,23 @@
     </div>
     <div data-bind="foreach: movies">
       <div class="movie">
-        <div class="released">
-          <span class="label">Released on: </span>
-          <span class="date" data-bind="text: releaseDate"></span>
+        <div class="poster">
+          <img data-bind="attr: { src: posterImageURL }" />
         </div>
-        <div class="title section">
-          <span class="label">Title: </span>
-          <span class="name" data-bind="text: title"></span>
-        </div>
-        <div class="character section">
-          <span class="label">character: </span>
-          <span class="name" data-bind="text: character"></span>
-        </div>
+        <table class="info">
+          <tr class="released">
+            <td class="label">Release Date:</td>
+            <td class="content" data-bind="text: releaseDate"></td>
+          </tr>
+          <tr class="title">
+            <td class="label">Title:</td>
+            <td class="content" data-bind="text: title"></td>
+          </tr>
+          <tr class="character">
+            <td class="label">Character:</td>
+            <td class="content" data-bind="text: character"></td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>

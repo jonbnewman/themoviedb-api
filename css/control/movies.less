@@ -23,6 +23,7 @@
     background: rgba(255,255,255,0.8);
     margin: 10px;
     z-index: 200;
+    .clearblock;
 
     &:hover {
       background: white;
@@ -38,20 +39,30 @@
       color: #888;
     }
 
-    & > .released {
-      font-size: 12px;
-      color: #888;
-      text-align: right;
-      margin-bottom: 5px;
-
-      & > .date {
-        color: #444;
-      }
+    & > .poster {
+      float: left;
     }
 
-    & > .title {
-      font-size: 20px;
-      font-weight: bold;
+    table.info {
+      float: left;
+      margin: 20px 0 20px 20px;
+      max-width: 240px;
+
+      .label {
+        text-align: right;
+        font-style: italic;
+      }
+
+      tr.title {
+        .content {
+          font-weight: bold;
+          font-size: 20px;
+          color: #666;
+        }
+      }
+      td {
+        padding: 2px;
+      }
     }
   }
 }

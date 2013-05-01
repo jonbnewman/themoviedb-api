@@ -65,7 +65,7 @@ define([
             main.movies.removeAll();
 
             for( var year in movies ) {
-              main.movies.push( new Movie( movies[ year ] ) );
+              main.movies.push( new Movie( $.extend( {}, movies[ year ], { config: main.config } ) ) );
             }
           }).always(function() {
             main.searchingMovies( false );
@@ -81,6 +81,15 @@ define([
           main.person.removeAll();
           main.person.push( person );
         }
+      });
+
+      // load the config from tmdb.org so we can generate poster image URLs correctly
+      $.ajax({
+        method: 'get',
+        url: '/json/config',
+        dataType: 'json'
+      }).then(function( config ) {
+        main.config = config;
       });
     };
 
