@@ -51,10 +51,14 @@ define([
         channel: 'main',
         topic: 'load:movies',
         callback: function( id ) {
+          if( this.reqInTransit !== undefined ) {
+            this.reqInTransit.abort();
+          }
+
           main.searchingMovies( true );
           main.movies.removeAll();
 
-          return $.ajax({
+          main.reqInTransit = $.ajax({
             method: 'get',
             url: '/json/TheMovieDBAPI/movieSearch/' + id,
             dataType: 'json'
@@ -66,6 +70,7 @@ define([
             }
           }).always(function() {
             main.searchingMovies( false );
+            main.reqInTransit = undefined;
           });
         }
       });
@@ -80,10 +85,24 @@ define([
       });
     };
 
+    Main.prototype.stopInTransitRequest = function() {
+      if( this.reqInTransit !== undefined ) {
+        this.reqInTransit.abort();
+      }
+
+      this.searchingActors( false );
+      this.searchingMovies( false );
+    };
+
     Main.prototype.searchActors = function() {
       var main = this;
       var params = ko.toJS( this.form );
+
       if( this.checkValidation( params ) !== false ) {
+        if( this.reqInTransit !== undefined ) {
+          this.reqInTransit.abort();
+        }
+
         this.searchingActors( true );
         this.people.removeAll();
         this.movies.removeAll();
@@ -91,7 +110,7 @@ define([
         main.numPeopleResults( undefined );
         main.numPeoplePages( undefined );
 
-        return $.ajax({
+        main.reqInTransit = $.ajax({
           method: 'get',
           url: '/json/TheMovieDBAPI/personSearch',
           dataType: 'json',
@@ -112,6 +131,7 @@ define([
           }
         }).always(function() {
           main.searchingActors( false );
+          main.reqInTransit = undefined;
         });
       }
     };
