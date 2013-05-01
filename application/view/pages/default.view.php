@@ -26,6 +26,12 @@
     </div>
   </div>
 
+  <div id="actor-floater" data-bind="foreach: person">
+    <div class="actor">
+      <div class="name" data-bind="text: name"></div>
+    </div>
+  </div>
+
   <div id="movies">
     <div id="movies-loading" data-bind="css: { visible: searchingMovies }">
       <img src="/images/ajax-blue.gif" />
@@ -45,12 +51,6 @@
           <span class="name" data-bind="text: character"></span>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div id="actor-floater" data-bind="foreach: person">
-    <div class="actor">
-      <div class="name" data-bind="text: name"></div>
     </div>
   </div>
 </div>
