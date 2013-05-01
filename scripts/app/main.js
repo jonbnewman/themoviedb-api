@@ -94,6 +94,11 @@ define([
               main.people.push( new Person( resultData ) );
             });
           }
+
+          if( main.people().length === 1 ) {
+            // pre-select the only result
+            main.people()[0].activate();
+          }
         }).always(function() {
           main.searchingActors( false );
         });
