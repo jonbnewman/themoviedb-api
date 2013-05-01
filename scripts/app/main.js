@@ -51,10 +51,7 @@ define([
         channel: 'main',
         topic: 'load:movies',
         callback: function( id ) {
-          if( this.reqInTransit !== undefined ) {
-            this.reqInTransit.abort();
-          }
-
+          main.stopInTransitRequest();
           main.searchingMovies( true );
           main.movies.removeAll();
 
@@ -62,7 +59,9 @@ define([
             method: 'get',
             url: '/json/TheMovieDBAPI/movieSearch/' + id,
             dataType: 'json'
-          }).then(function( movies ) {
+          });
+
+          main.reqInTransit.then(function( movies ) {
             main.movies.removeAll();
 
             for( var year in movies ) {
@@ -70,7 +69,7 @@ define([
             }
           }).always(function() {
             main.searchingMovies( false );
-            main.reqInTransit = undefined;
+            // main.reqInTransit = undefined;
           });
         }
       });
@@ -86,7 +85,7 @@ define([
     };
 
     Main.prototype.stopInTransitRequest = function() {
-      if( this.reqInTransit !== undefined ) {
+      if( this.reqInTransit !== undefined && typeof this.reqInTransit.abort === 'function' ) {
         this.reqInTransit.abort();
       }
 
@@ -99,10 +98,7 @@ define([
       var params = ko.toJS( this.form );
 
       if( this.checkValidation( params ) !== false ) {
-        if( this.reqInTransit !== undefined ) {
-          this.reqInTransit.abort();
-        }
-
+        this.stopInTransitRequest();
         this.searchingActors( true );
         this.people.removeAll();
         this.movies.removeAll();
@@ -115,7 +111,9 @@ define([
           url: '/json/TheMovieDBAPI/personSearch',
           dataType: 'json',
           data: params
-        }).then(function( data ) {
+        });
+
+        main.reqInTransit.then(function( data ) {
           main.numPeopleResults( data.total_results );
           main.numPeoplePages( data.total_pages );
 
@@ -131,7 +129,7 @@ define([
           }
         }).always(function() {
           main.searchingActors( false );
-          main.reqInTransit = undefined;
+          // main.reqInTransit = undefined;
         });
       }
     };
