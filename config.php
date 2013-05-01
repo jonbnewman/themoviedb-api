@@ -8,7 +8,7 @@
 define( 'ROOT', __DIR__ );
 
 /**
- * Twitter username to stream
+ * API Key for TMDB
  */
 define('API_KEY', 'a0c930e0998ae0fcfe722333f6721c53');
 
