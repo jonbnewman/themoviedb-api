@@ -1,4 +1,43 @@
-<p>APPENDTO Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut sapien vitae mauris sodales pretium et et diam. Proin eget erat metus, nec bibendum lacus. Suspendisse adipiscing dapibus iaculis. Etiam non arcu lectus, a bibendum enim. In vehicula metus at neque tristique gravida. Maecenas risus risus, tristique sed lacinia at, ornare eget urna. Donec elementum, nibh eget rutrum vestibulum, enim purus semper elit, ut commodo diam elit non lectus. In ornare sollicitudin ligula nec facilisis. Sed nec ornare est. Curabitur turpis nisi, bibendum eu porttitor ut, feugiat sit amet justo. Vivamus ligula neque, volutpat eget pulvinar sed, gravida vel sem. Sed a leo ligula. Aenean auctor quam eu odio sagittis sollicitudin. Proin non nunc sapien. Donec porttitor vestibulum lacus a sagittis. Phasellus non massa purus, non vulputate augue.</p>
+<form data-bind="submit: searchActors">
+  <label for="queryString">
+    <span>Actor/Actress</span>
+    <input type="text" id="queryString" class="focus" data-bind="value: form.queryString, valueUpdate: 'afterkeydown'" placeholder="Robert De Niro" />
+    <div class="error" data-bind="css: { active: validation.state.queryString }"><span class="icon icon-warning"></span> Please enter an actor or actresses name.</div>
+  </label>
+  <button>Find Movies <span class="icon icon-search"></span> </button>
+</form>
 
-<p>Nullam tempus elementum arcu, eget consequat libero blandit eu. Nam feugiat, dui a ultricies egestas, elit dolor rutrum dui, sit amet dapibus sapien augue quis metus. Pellentesque et justo sed lacus rhoncus elementum. Aliquam hendrerit, orci ornare eleifend hendrerit, felis ipsum semper urna, et aliquam ante eros a nunc. Maecenas rutrum rutrum mi in placerat. Nunc turpis sapien, gravida sit amet laoreet at, sodales ac enim. Quisque feugiat nibh nec tellus cursus semper. Donec risus tortor, pulvinar eu imperdiet in, condimentum nec neque. Vestibulum porta lacinia mi id elementum. Proin pharetra, odio id scelerisque fermentum, sapien dui convallis dui, eu adipiscing erat tortor sit amet mi. Quisque vel metus nec tortor dignissim sodales. Nulla nec felis dictum neque tempor condimentum sed vel mi. Vivamus eu pulvinar erat. Maecenas tristique sodales luctus. Vivamus rutrum, turpis eget lacinia feugiat, nunc velit convallis nulla, nec aliquam orci dui id arcu. Sed condimentum, risus quis consequat commodo, ligula nulla congue nisi, id congue massa metus eu nibh.</p>
+<div id="no-results" data-bind="css: { visible: !people().length && !searchingActors() }">
+  <div class="message">Please use the form on the left to search for an actor or actress by name.</div>
+</div>
+<div id="loading-results" data-bind="css: { visible: searchingActors }">
+  <img src="/images/ajax-white.gif" />
+</div>
+<div id="results" data-bind="css: { visible: people().length }">
+  <div id="actor-search-results">
+    <div class="people-label">
+      <span>Actors Found: </span>
+      <span class="num-actors" data-bind="text: numPeopleResults"></span>
+    </div>
+    <div class="people" data-bind="foreach: people">
+      <div class="person" data-bind="click: activate, css: { active: active }">
+        <span class="name" data-bind="text: name"></span>
+      </div>
+    </div>
+  </div>
 
+  <div id="movies">
+    <div id="movies-loading" data-bind="css: { visible: searchingMovies }">
+      <img src="/images/ajax-blue.gif" />
+    </div>
+    <div data-bind="foreach: movies">
+      <div class="movie">
+        <div class="released">
+          <span>Released on: </span>
+          <span class="date" data-bind="text: releaseDate"></span>
+        </div>
+        <div class="title"><span data-bind="text: title"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
