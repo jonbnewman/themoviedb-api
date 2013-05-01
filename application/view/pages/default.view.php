@@ -33,10 +33,17 @@
     <div data-bind="foreach: movies">
       <div class="movie">
         <div class="released">
-          <span>Released on: </span>
+          <span class="label">Released on: </span>
           <span class="date" data-bind="text: releaseDate"></span>
         </div>
-        <div class="title"><span data-bind="text: title"></span></div>
+        <div class="title section">
+          <span class="label">Title: </span>
+          <span class="name" data-bind="text: title"></span>
+        </div>
+        <div class="character section">
+          <span class="label">character: </span>
+          <span class="name" data-bind="text: character"></span>
+        </div>
       </div>
     </div>
   </div>

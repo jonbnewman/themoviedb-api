@@ -20,7 +20,22 @@
     border: 1px solid #aaa;
     padding: 10px;
     background: white;
+    background: rgba(255,255,255,0.8);
     margin: 10px;
+
+    &:hover {
+      background: white;
+      .transform(scale(1.1));
+      .box-shadow(0 2px 4px -1px rgba(0,0,0,0.8));
+      .transition(all 0.2s ease);
+    }
+
+    & > .section > .label {
+      display: inline-block;
+      width: 75px;
+      text-align: right;
+      color: #888;
+    }
 
     & > .released {
       font-size: 12px;
@@ -32,6 +47,7 @@
         color: #444;
       }
     }
+
     & > .title {
       font-size: 20px;
       font-weight: bold;
