@@ -33,6 +33,13 @@ define([
         channel: 'people',
         topic: 'deactivate:all'
       });
+
+      postal.publish({
+        channel: 'people',
+        topic: 'activated:person',
+        data: this
+      });
+
       this.active( true );
     };
 

@@ -47,4 +47,10 @@
       </div>
     </div>
   </div>
+
+  <div id="actor-floater" data-bind="foreach: person">
+    <div class="actor">
+      <div class="name" data-bind="text: name"></div>
+    </div>
+  </div>
 </div>

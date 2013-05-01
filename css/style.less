@@ -130,9 +130,27 @@ footer {
 #results {
   float: left;
   display: none;
+  position: relative;
 
   &.visible {
     display: block;
+  }
+}
+
+#actor-floater {
+  background: none repeat scroll 0 0 #B5C8D9;
+  float: right;
+  left: 920px;
+  position: fixed;
+  z-index: 1;
+  .border-radius(0 0 5px 0);
+  .box-sizing(border-box);
+
+  & > .actor {
+    padding: 10px;
+    color: #444;
+    font-weight: bold;
+    font-size: 15px;
   }
 }
 

@@ -4,7 +4,6 @@ define([
 
     var Movie = function( movieData ) {
       var movie = this;
-      console.log(movieData);
 
       this.id = ko.observable( movieData.id );
       this.title = ko.observable( movieData.title );

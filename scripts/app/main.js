@@ -8,6 +8,7 @@ define([
 
       this.numPeopleResults = ko.observable();
       this.numPeoplePages = ko.observable();
+      this.person = ko.observableArray();
       this.people = ko.observableArray();
       this.movies = ko.observableArray();
       this.searchingActors = ko.observable( false );
@@ -68,6 +69,15 @@ define([
           });
         }
       });
+
+      postal.subscribe({
+        channel: 'people',
+        topic: 'activated:person',
+        callback: function( person ) {
+          main.person.removeAll();
+          main.person.push( person );
+        }
+      });
     };
 
     Main.prototype.searchActors = function() {
@@ -77,6 +87,7 @@ define([
         this.searchingActors( true );
         this.people.removeAll();
         this.movies.removeAll();
+        this.person.removeAll();
         main.numPeopleResults( undefined );
         main.numPeoplePages( undefined );
 
