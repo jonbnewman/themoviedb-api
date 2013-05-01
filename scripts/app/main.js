@@ -69,7 +69,7 @@ define([
             }
           }).always(function() {
             main.searchingMovies( false );
-            // main.reqInTransit = undefined;
+            main.reqInTransit = undefined;
           });
         }
       });
@@ -138,7 +138,7 @@ define([
           }
         }).always(function() {
           main.searchingActors( false );
-          // main.reqInTransit = undefined;
+          main.reqInTransit = undefined;
         });
       }
     };
