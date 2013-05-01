@@ -29,6 +29,9 @@
       <div id="no-results" data-bind="css: { visible: !people().length && !searchingActors() }">
         <div class="message">Please use the form on the left to search for an actor or actress by name.</div>
       </div>
+      <div id="loading-results" data-bind="css: { visible: searchingActors }">
+        <img src="/images/ajax-white.gif" />
+      </div>
       <div id="results" data-bind="css: { visible: people().length }">
         <div id="actor-search-results">
           <div class="people-label">
@@ -42,13 +45,18 @@
           </div>
         </div>
 
-        <div id="movies" data-bind="foreach: movies">
-          <div class="movie">
-            <div class="released">
-              <span>Released on: </span>
-              <span class="date" data-bind="text: releaseDate"></span>
+        <div id="movies">
+          <div id="movies-loading" data-bind="css: { visible: searchingMovies }">
+            <img src="/images/ajax-blue.gif" />
+          </div>
+          <div data-bind="foreach: movies">
+            <div class="movie">
+              <div class="released">
+                <span>Released on: </span>
+                <span class="date" data-bind="text: releaseDate"></span>
+              </div>
+              <div class="title"><span data-bind="text: title"></span></div>
             </div>
-            <div class="title"><span data-bind="text: title"></span></div>
           </div>
         </div>
       </div>

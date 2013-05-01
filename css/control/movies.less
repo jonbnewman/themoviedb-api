@@ -1,10 +1,20 @@
+#movies-loading {
+  display: block;
+  margin: 70px auto 0;
+  text-align: center;
+  display: none;
+  &.visible {
+    display: block;
+  }
+}
+
 #movies {
   float: left;
   background: #b5c8d9;
   min-height: 630px;
   width: 400px;
 
-  & > .movie {
+  .movie {
     .box-sizing(border-box);
     .border-radius(5px);
     border: 1px solid #aaa;

@@ -95,7 +95,7 @@ define([
             });
           }
         }).always(function() {
-          this.searchingActors( false );
+          main.searchingActors( false );
         });
       }
     };

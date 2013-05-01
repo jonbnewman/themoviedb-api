@@ -9,7 +9,7 @@ define([
       this.title = ko.observable( movieData.title );
       this.character = ko.observable( movieData.character );
       this.poster = ko.observable( movieData.poster_path );
-      this.releaseDate = ko.observable( movieData.release_date );
+      this.releaseDate = ko.observable( movieData.release_date || 'N/A' );
     };
 
     return Movie;
