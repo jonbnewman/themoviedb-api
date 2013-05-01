@@ -355,6 +355,15 @@ form button:active {
   background: rgba(255, 255, 255, 0.8);
   margin: 10px;
   z-index: 200;
+  display: block;
+}
+#movies .movie:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
 }
 #movies .movie:hover {
   background: white;
@@ -379,16 +388,23 @@ form button:active {
   text-align: right;
   color: #888;
 }
-#movies .movie > .released {
-  font-size: 12px;
-  color: #888;
+#movies .movie > .poster {
+  float: left;
+}
+#movies .movie table.info {
+  float: left;
+  margin: 20px 0 20px 20px;
+  max-width: 240px;
+}
+#movies .movie table.info .label {
   text-align: right;
-  margin-bottom: 5px;
+  font-style: italic;
 }
-#movies .movie > .released > .date {
-  color: #444;
-}
-#movies .movie > .title {
-  font-size: 20px;
+#movies .movie table.info tr.title .content {
   font-weight: bold;
+  font-size: 20px;
+  color: #666;
+}
+#movies .movie table.info td {
+  padding: 2px;
 }
